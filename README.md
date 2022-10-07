@@ -13,7 +13,7 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   * Transfer Ownership
   * Seller gets paid 
   
-  / Dapp University /
+  /-- Dapp University --/
 
 Try running some of the following tasks:
 
