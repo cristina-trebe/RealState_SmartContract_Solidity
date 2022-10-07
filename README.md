@@ -1,7 +1,8 @@
-# RealEstate - SmartContract / NFT
-##  Sample  "JS / Solidity / Hardhat" Project
+# RealEstate - Smart-Contract
+##  Sample  "Solidity / Hardhat with Javascript" Project
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+
  ![Overview SmartContract_RealEstate](./images/Overview.png)
   * Seller lists property
   * Buyer deposits earnset
@@ -11,6 +12,8 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   * Lender funds
   * Transfer Ownership
   * Seller gets paid 
+  
+  / Dapp University /
 
 Try running some of the following tasks:
 
