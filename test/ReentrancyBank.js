@@ -27,7 +27,14 @@ describe('Reentrancy', () => {
        })
 
        it('accepts withdraws', async () => {
-           
+           await bank.withdraw()
+
+           const deployerBalance = await bank.balanceOf(deployer.address)
+           const userBalance = await bank.balanceOf(user.address)
+
+           expect(deployerBalance).to.eq(0)
+           expect(userBalance).to.eq(ethers.utils.parseEther('50'))
+
        })
 
     })
