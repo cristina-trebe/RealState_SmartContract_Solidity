@@ -26,7 +26,7 @@ contract FlashLoanReceiver {
         // Emit event
         emit LoanReceived(_tokenAddress, _amount);
 
-        //Do staff with the money...
+        //Do staff with the money... buy cryptocurrency
 
         //Return funds to pool
         require(Token(_tokenAddress).transfer(msg.sender, _amount), "Transfer of tokens failed");
