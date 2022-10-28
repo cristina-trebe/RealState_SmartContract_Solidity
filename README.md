@@ -13,11 +13,14 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   * Transfer Ownership
   * Seller gets paid 
 
+  --------------------------------------------------------------------------------------
+
   Flash Loan - Arbitrage Exemple
 
   ![Overview SmartContract_RealEstate](./images/FlashLoan_ArbitrageExemple.png)
   
   /-- Dapp University --/
+  https://www.youtube.com/watch?v=eoQJ6nFZOcs&t=6705s
 
 Try running some of the following tasks:
 
