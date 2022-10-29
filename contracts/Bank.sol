@@ -2,8 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Address.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract Bank {
+contract Bank is ReentrancyGuard{
 
     using Address for address payable;
 
@@ -15,8 +16,8 @@ contract Bank {
 
     }
 
-    //withdraw ether funds -> with vulnarability
-    function withdraw() external {
+    //withdraw ether funds -> with vulnarability -> "nonReentrant" fix vulnerability
+    function withdraw() external nonReentrant {
         uint256 depositedAmount = balanceOf[msg.sender];
         payable(msg.sender).sendValue(depositedAmount);
         balanceOf[msg.sender] = 0;
