@@ -47,11 +47,13 @@ describe('Reentrancy', () => {
            console.log(`Attacker's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(attacker.address))}`)
 
            //Perform Attack
+           await attackerContract.attack({ value: ethers.utils.parseEther('10')})
            console.log('*** After ***')
            console.log(`Bank's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(bank.address))}`)
            console.log(`Attacker's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(attacker.address))}`)
 
            //Check bank balance has been drained
+           expect(await ethers.provider.getBalance(bank.address)).to.equal(0)
        })
 
     })
