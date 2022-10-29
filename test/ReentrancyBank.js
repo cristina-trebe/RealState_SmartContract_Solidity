@@ -1,18 +1,22 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
+const { TASK_CLEAN_GLOBAL } = require('hardhat/builtin-tasks/task-names');
 
 describe('Reentrancy', () => {
     let deployer
     let bank
 
     beforeEach(async () => {
-       [deployer, user] = await ethers.getSigners()
+       [deployer, user, attacker] = await ethers.getSigners()
 
         const Bank = await ethers.getContractFactory('Bank', deployer)
         bank = await Bank.deploy()
 
         await bank.deposit({ value: ethers.utils.parseEther('100') })
         await bank.connect(user).deposit({ value: ethers.utils.parseEther('50') })
+
+        const Attacker = await ethers.getContractFactory('Attacker', attacker)
+        attackerContract = await Attacker.deploy(bank.address)
 
     })
 
@@ -35,6 +39,19 @@ describe('Reentrancy', () => {
            expect(deployerBalance).to.eq(0)
            expect(userBalance).to.eq(ethers.utils.parseEther('50'))
 
+       })
+
+       it('allows attacker to drain funds from #withdraw()', async () => {
+           console.log('*** Before ***')
+           console.log(`Bank's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(bank.address))}`)
+           console.log(`Attacker's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(attacker.address))}`)
+
+           //Perform Attack
+           console.log('*** After ***')
+           console.log(`Bank's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(bank.address))}`)
+           console.log(`Attacker's balance: ${ethers.utils.formatEther(await ethers.provider.getBalance(attacker.address))}`)
+
+           //Check bank balance has been drained
        })
 
     })
